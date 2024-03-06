@@ -27,11 +27,54 @@ public class Main {
      * @return The new smoothie to be added to our order ("Smoothie: Mango Banana Peach")
      */
     static String orderSmoothie() {
-        // TODO: Add switch statement then while loop
-        // TODO: Why does this only need a while(true) and not a flag?
-        System.out.println("This will ask for toppings, just send default order for now:" +
-                "\nAdding an Orange Mango Smoothie");
-        return "Smoothie: Orange Mango";
+        // TODO: Replace this String with a StringBuilder
+        String smoothie = "Smoothie: ";
+
+        // You can use a flag here (its fine if you do) but we don't have to
+        // Because we will return (i.e. Break out of the function itself) on option 7
+        while (true) {
+            // Print out menu
+            System.out.print("""
+                    Please select a flavor:
+                    1. Strawberry
+                    2. Peach
+                    3. Banana
+                    4. Orange
+                    5. Mango
+                    6. Melon
+                    7. Finished Selecting
+                    Make Selection:\s""");
+
+            // I could make a variable here to hold our choice but then I'd just erase it after
+            // So I'll use scanner's return directly here
+            switch (Integer.parseInt(scan.nextLine())) {
+                case 1:
+                    smoothie += "Strawberry ";
+                    break;
+                case 2:
+                    smoothie += "Peach ";
+                    break;
+                case 3:
+                    smoothie += "Banana ";
+                    break;
+                case 4:
+                    smoothie += "Orange ";
+                    break;
+                case 5:
+                    smoothie += "Mango ";
+                    break;
+                case 6:
+                    smoothie += "Melon ";
+                    break;
+                case 7:
+                    // See because we return this also exits the switch & while loop
+                    // So no break or flag needed
+                    return smoothie;
+                default:
+                    System.out.println("Please enter an option between 1 & 7.");
+
+            }
+        }
     }
 
     /**
@@ -41,19 +84,17 @@ public class Main {
      * Then just return and print that.
      */
     static int calcTotal(String order) {
-        // TODO: complete the equation (add the math needed) - what's length do?
-        return order.length();
+        // TODO: Use a List to fully track flavors
+        return 10 + (order.length()/4) * 2;
     }
 
     public static void main(String[] args) {
+        // Flag because we are breaking out of an inner switch & loop
         boolean stillOrdering = true;
+        // String to hold total order
+        String order = "";
 
-        // TODO: THERE IS AN ERROR BELOW - What is it and how do we fix it?
-        // TODO: Why does this need a flag instead of just while(true)?
         while (stillOrdering) {
-            // String to hold total order
-            String order = "";
-
             /* Display main menu (done for you as example)
              * This is a textblock (\s says leave the space) another fun way of printing
              * Use a textblock with """ <-- everything between the first and second --> """
@@ -83,7 +124,7 @@ public class Main {
                     stillOrdering = false;
                     break;
                 default:
-                    continue; // this just says move on (basically ignore me)
+                    System.out.println("Please enter an option between 1 & 3.");
             }
         }
     }
