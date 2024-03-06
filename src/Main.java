@@ -28,6 +28,7 @@ public class Main {
      */
     static String orderSmoothie() {
         // TODO: Add switch statement then while loop
+        // TODO: Why does this only need a while(true) and not a flag?
         System.out.println("This will ask for toppings, just send default order for now:" +
                 "\nAdding an Orange Mango Smoothie");
         return "Smoothie: Orange Mango";
@@ -48,6 +49,7 @@ public class Main {
         boolean stillOrdering = true;
 
         // TODO: THERE IS AN ERROR BELOW - What is it and how do we fix it?
+        // TODO: Why does this need a flag instead of just while(true)?
         while (stillOrdering) {
             // String to hold total order
             String order = "";
